@@ -1,8 +1,8 @@
 {
-  "name": "@uniswap/sdk",
+  "name": "@jediswap/sdk",
   "license": "MIT",
-  "version": "3.0.3",
-  "description": "🛠 An SDK for building applications on top of Uniswap.",
+  "version": "1.0.0",
+  "description": "🛠 An SDK for building applications on top of Jediswap.",
   "main": "dist/index.js",
   "typings": "dist/index.d.ts",
   "files": [
@@ -26,6 +26,7 @@
     "big.js": "^5.2.2",
     "decimal.js-light": "^2.5.0",
     "jsbi": "^3.1.1",
+    "starknet": "^2.7.2",
     "tiny-invariant": "^1.1.0",
     "tiny-warning": "^1.0.3",
     "toformat": "^2.0.0"

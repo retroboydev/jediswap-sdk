@@ -47,16 +47,16 @@ export class Pair {
     return PAIR_ADDRESS_CACHE[tokens[0].address][tokens[1].address]
   }
 
-  public constructor(tokenAmountA: TokenAmount, tokenAmountB: TokenAmount) {
+  public constructor(tokenAmountA: TokenAmount, tokenAmountB: TokenAmount, pairAddress?: string) {
     const tokenAmounts = tokenAmountA.token.sortsBefore(tokenAmountB.token) // does safety checks
       ? [tokenAmountA, tokenAmountB]
       : [tokenAmountB, tokenAmountA]
     this.liquidityToken = new Token(
       tokenAmounts[0].token.chainId,
-      Pair.getAddress(tokenAmounts[0].token, tokenAmounts[1].token),
+      pairAddress ? pairAddress : Pair.getAddress(tokenAmounts[0].token, tokenAmounts[1].token),
       18,
-      'UNI-V2',
-      'Uniswap V2'
+      'JEDI-V1',
+      'Jediswap V1'
     )
     this.tokenAmounts = tokenAmounts as [TokenAmount, TokenAmount]
   }
@@ -137,7 +137,14 @@ export class Pair {
     if (JSBI.equal(outputAmount.raw, ZERO)) {
       throw new InsufficientInputAmountError()
     }
-    return [outputAmount, new Pair(inputReserve.add(inputAmount), outputReserve.subtract(outputAmount))]
+    return [
+      outputAmount,
+      new Pair(
+        inputReserve.add(inputAmount),
+        outputReserve.subtract(outputAmount),
+        '0x578b1a8a2a5be6d256ef9347ac106f10a213aac9990c3c2caf222402229886b'
+      )
+    ]
   }
 
   public getInputAmount(outputAmount: TokenAmount): [TokenAmount, Pair] {
@@ -158,7 +165,14 @@ export class Pair {
       outputAmount.token.equals(this.token0) ? this.token1 : this.token0,
       JSBI.add(JSBI.divide(numerator, denominator), ONE)
     )
-    return [inputAmount, new Pair(inputReserve.add(inputAmount), outputReserve.subtract(outputAmount))]
+    return [
+      inputAmount,
+      new Pair(
+        inputReserve.add(inputAmount),
+        outputReserve.subtract(outputAmount),
+        '0x578b1a8a2a5be6d256ef9347ac106f10a213aac9990c3c2caf222402229886b'
+      )
+    ]
   }
 
   public getLiquidityMinted(
