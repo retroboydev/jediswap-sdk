@@ -3,6 +3,9 @@
   "license": "MIT",
   "version": "1.0.0",
   "description": "🛠 An SDK for building applications on top of Jediswap.",
+  "publishConfig": {
+    "access": "public"
+  },
   "main": "dist/index.js",
   "typings": "dist/index.d.ts",
   "files": [
@@ -20,8 +23,7 @@
     "start": "tsdx watch",
     "test": "tsdx test",
     "prepublishOnly": "tsdx build",
-    "prepare": "tsdx build",
-    "postinstall": "tsdx build"
+    "prepare": "tsdx build"
   },
   "dependencies": {
     "@uniswap/v2-core": "^1.0.0",
