@@ -89,7 +89,7 @@ export abstract class Router {
         ? `0x${(Math.floor(new Date().getTime() / 1000) + options.ttl).toString(16)}`
         : `0x${options.deadline.toString(16)}`
 
-    const useFeeOnTransfer = Boolean(options.feeOnTransfer)
+    // const useFeeOnTransfer = Boolean(options.feeOnTransfer)
 
     let methodName: string
     let args: (string | string[])[]
