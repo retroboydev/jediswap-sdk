@@ -1056,6 +1056,22 @@
     "@ethersproject/properties" "^5.0.0"
     "@ethersproject/strings" "^5.0.0"
 
+"@jediswap/starknet@^2.7.1":
+  version "2.7.1"
+  resolved "https://registry.yarnpkg.com/@jediswap/starknet/-/starknet-2.7.1.tgz#5ced80b3345fdcd886cf6230f03bb37dbf2a52bb"
+  integrity sha512-BXTxdjuQEFuLBIwAJmwRzbhl8UujCrtn5C0ui5ySgScsMqNcKimdjthPM3MR2klpWqWgAuMXeydV7pBKhOS7yA==
+  dependencies:
+    axios "^0.23.0"
+    bn.js "^5.2.0"
+    elliptic "^6.5.4"
+    ethereum-cryptography "^0.2.0"
+    hash.js "^1.1.7"
+    json-bigint "^1.0.0"
+    minimalistic-assert "^1.0.1"
+    pako "^2.0.4"
+    superstruct "^0.15.3"
+    url-join "^4.0.1"
+
 "@jest/console@^24.7.1", "@jest/console@^24.9.0":
   version "24.9.0"
   resolved "https://registry.yarnpkg.com/@jest/console/-/console-24.9.0.tgz#79b1bc06fb74a8cfb01cbdedf945584b1b9707f0"
@@ -5796,22 +5812,6 @@ stack-utils@^1.0.1:
   version "1.0.2"
   resolved "https://registry.yarnpkg.com/stack-utils/-/stack-utils-1.0.2.tgz#33eba3897788558bebfc2db059dc158ec36cebb8"
   integrity sha512-MTX+MeG5U994cazkjd/9KNAapsHnibjMLnfXodlkXw76JEea0UiNzrqidzo1emMwk7w5Qhc9jd4Bn9TBb1MFwA==
-
-starknet@^2.7.2:
-  version "2.7.2"
-  resolved "https://registry.yarnpkg.com/starknet/-/starknet-2.7.2.tgz#927d7aaa226bd213420584e4397911f56f75e664"
-  integrity sha512-TLFrpQEOYx7o9wgF6fPOQwplxFu+CSaxy5Yidn7TW5B9PkMHaQRPmQdx508oxadeaJnye6wJTQ1zfYBrMrxnrg==
-  dependencies:
-    axios "^0.23.0"
-    bn.js "^5.2.0"
-    elliptic "^6.5.4"
-    ethereum-cryptography "^0.2.0"
-    hash.js "^1.1.7"
-    json-bigint "^1.0.0"
-    minimalistic-assert "^1.0.1"
-    pako "^2.0.4"
-    superstruct "^0.15.3"
-    url-join "^4.0.1"
 
 static-extend@^0.1.1:
   version "0.1.2"
