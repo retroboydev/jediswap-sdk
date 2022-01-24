@@ -2,6 +2,7 @@ import invariant from 'tiny-invariant'
 import { ChainId } from '../constants'
 import { validateAndParseAddress } from '../utils'
 import { Currency } from './currency'
+import { number } from 'starknet'
 
 /**
  * Represents an ERC20 token with a unique address and some metadata.
@@ -37,7 +38,7 @@ export class Token extends Currency {
   public sortsBefore(other: Token): boolean {
     invariant(this.chainId === other.chainId, 'CHAIN_IDS')
     invariant(this.address !== other.address, 'ADDRESSES')
-    return this.address.toLowerCase() < other.address.toLowerCase()
+    return number.toBN(this.address) < number.toBN(other.address)
   }
 }
 
