@@ -1056,10 +1056,10 @@
     "@ethersproject/properties" "^5.0.0"
     "@ethersproject/strings" "^5.0.0"
 
-"@jediswap/starknet@^2.7.1":
-  version "2.7.1"
-  resolved "https://registry.yarnpkg.com/@jediswap/starknet/-/starknet-2.7.1.tgz#5ced80b3345fdcd886cf6230f03bb37dbf2a52bb"
-  integrity sha512-BXTxdjuQEFuLBIwAJmwRzbhl8UujCrtn5C0ui5ySgScsMqNcKimdjthPM3MR2klpWqWgAuMXeydV7pBKhOS7yA==
+"@jediswap/starknet@^2.7.2":
+  version "2.7.2"
+  resolved "https://registry.yarnpkg.com/@jediswap/starknet/-/starknet-2.7.2.tgz#826bdd04739ddc6b5d04e2cb9e223754d201a5bc"
+  integrity sha512-pyG+iZuMCruDJlf6cQ+Of6T3oPmEzc8rYG2wG7c4xoNliESmys33DqSAORp2SWPTSXN2rUODbVzQKfpZtRzh7Q==
   dependencies:
     axios "^0.23.0"
     bn.js "^5.2.0"
