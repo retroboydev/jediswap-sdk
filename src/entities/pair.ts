@@ -26,6 +26,7 @@ let PAIR_ADDRESS_CACHE: { [token0Address: string]: { [token1Address: string]: st
 export class Pair {
   public readonly liquidityToken: Token
   private readonly tokenAmounts: [TokenAmount, TokenAmount]
+  public readonly pairAddress: string
 
   public static getAddress(tokenA: Token, tokenB: Token): string {
     const tokens = tokenA.sortsBefore(tokenB) ? [tokenA, tokenB] : [tokenB, tokenA] // does safety checks
@@ -51,13 +52,10 @@ export class Pair {
     const tokenAmounts = tokenAmountA.token.sortsBefore(tokenAmountB.token) // does safety checks
       ? [tokenAmountA, tokenAmountB]
       : [tokenAmountB, tokenAmountA]
-    this.liquidityToken = new Token(
-      tokenAmounts[0].token.chainId,
-      pairAddress ? pairAddress : Pair.getAddress(tokenAmounts[0].token, tokenAmounts[1].token),
-      18,
-      'JEDI-V1',
-      'Jediswap V1'
-    )
+
+    this.pairAddress = pairAddress ? pairAddress : Pair.getAddress(tokenAmountA.token, tokenAmountB.token)
+
+    this.liquidityToken = new Token(tokenAmounts[0].token.chainId, this.pairAddress, 18, 'JEDI-V1', 'Jediswap V1')
     this.tokenAmounts = tokenAmounts as [TokenAmount, TokenAmount]
   }
 
@@ -139,11 +137,7 @@ export class Pair {
     }
     return [
       outputAmount,
-      new Pair(
-        inputReserve.add(inputAmount),
-        outputReserve.subtract(outputAmount),
-        '0x578b1a8a2a5be6d256ef9347ac106f10a213aac9990c3c2caf222402229886b'
-      )
+      new Pair(inputReserve.add(inputAmount), outputReserve.subtract(outputAmount), this.pairAddress)
     ]
   }
 
@@ -167,11 +161,7 @@ export class Pair {
     )
     return [
       inputAmount,
-      new Pair(
-        inputReserve.add(inputAmount),
-        outputReserve.subtract(outputAmount),
-        '0x578b1a8a2a5be6d256ef9347ac106f10a213aac9990c3c2caf222402229886b'
-      )
+      new Pair(inputReserve.add(inputAmount), outputReserve.subtract(outputAmount), this.pairAddress)
     ]
   }
 
