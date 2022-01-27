@@ -65,36 +65,36 @@ export const WTOKEN0 = {
     ChainId.GÖRLI,
     '0x178dbb224d42b76d1e4697741c8c43068ced9792bc511941ce865c0fc951369',
     18,
-    'TOKEN0',
-    'Token 0'
+    'JAN26J0',
+    'Jan26 J0'
   ),
   [ChainId.MAINNET]: new Token(
     ChainId.MAINNET,
     '0x178dbb224d42b76d1e4697741c8c43068ced9792bc511941ce865c0fc951369',
     18,
-    'WETH',
-    'Wrapped Ether'
+    'JAN26J0',
+    'Jan26 J0'
   ),
   [ChainId.ROPSTEN]: new Token(
     ChainId.ROPSTEN,
     '0x178dbb224d42b76d1e4697741c8c43068ced9792bc511941ce865c0fc951369',
     18,
-    'WETH',
-    'Wrapped Ether'
+    'JAN26J0',
+    'Jan26 J0'
   ),
   [ChainId.RINKEBY]: new Token(
     ChainId.RINKEBY,
     '0x178dbb224d42b76d1e4697741c8c43068ced9792bc511941ce865c0fc951369',
     18,
-    'WETH',
-    'Wrapped Ether'
+    'JAN26J0',
+    'Jan26 J0'
   ),
 
   [ChainId.KOVAN]: new Token(
     ChainId.KOVAN,
     '0x178dbb224d42b76d1e4697741c8c43068ced9792bc511941ce865c0fc951369',
     18,
-    'WETH',
-    'Wrapped Ether'
+    'JAN26J0',
+    'Jan26 J0'
   )
 }
