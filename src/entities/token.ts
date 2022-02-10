@@ -1,7 +1,7 @@
 import invariant from 'tiny-invariant'
 import { ChainId } from '../constants'
 import { validateAndParseAddress } from '@jediswap/starknet'
-import { Currency } from './currency'
+import { Currency, TOKEN0 } from './currency'
 import { number } from '@jediswap/starknet'
 
 /**
@@ -64,37 +64,37 @@ export const WTOKEN0 = {
   [ChainId.GÖRLI]: new Token(
     ChainId.GÖRLI,
     '0x51ecf6b7831cd141391313ce417f5f50e2a2cadba553562064bcd0e78eed8d7',
-    18,
-    'JAN26J0',
-    'Jan26 J0'
+    TOKEN0.decimals,
+    TOKEN0.symbol,
+    TOKEN0.name
   ),
   [ChainId.MAINNET]: new Token(
     ChainId.MAINNET,
     '0x51ecf6b7831cd141391313ce417f5f50e2a2cadba553562064bcd0e78eed8d7',
-    18,
-    'JAN26J0',
-    'Jan26 J0'
+    TOKEN0.decimals,
+    TOKEN0.symbol,
+    TOKEN0.name
   ),
   [ChainId.ROPSTEN]: new Token(
     ChainId.ROPSTEN,
     '0x51ecf6b7831cd141391313ce417f5f50e2a2cadba553562064bcd0e78eed8d7',
-    18,
-    'JAN26J0',
-    'Jan26 J0'
+    TOKEN0.decimals,
+    TOKEN0.symbol,
+    TOKEN0.name
   ),
   [ChainId.RINKEBY]: new Token(
     ChainId.RINKEBY,
     '0x51ecf6b7831cd141391313ce417f5f50e2a2cadba553562064bcd0e78eed8d7',
-    18,
-    'JAN26J0',
-    'Jan26 J0'
+    TOKEN0.decimals,
+    TOKEN0.symbol,
+    TOKEN0.name
   ),
 
   [ChainId.KOVAN]: new Token(
     ChainId.KOVAN,
     '0x51ecf6b7831cd141391313ce417f5f50e2a2cadba553562064bcd0e78eed8d7',
-    18,
-    'JAN26J0',
-    'Jan26 J0'
+    TOKEN0.decimals,
+    TOKEN0.symbol,
+    TOKEN0.name
   )
 }
