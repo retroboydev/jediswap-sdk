@@ -55,7 +55,7 @@ export class Pair {
 
     this.pairAddress = pairAddress ? pairAddress : Pair.getAddress(tokenAmountA.token, tokenAmountB.token)
 
-    this.liquidityToken = new Token(tokenAmounts[0].token.chainId, this.pairAddress, 18, 'JEDI-V1', 'Jediswap V1')
+    this.liquidityToken = new Token(tokenAmounts[0].token.chainId, this.pairAddress, 18, 'MGP', 'Mesh Generic Pair')
     this.tokenAmounts = tokenAmounts as [TokenAmount, TokenAmount]
   }
 
