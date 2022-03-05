@@ -1,8 +1,8 @@
 import invariant from 'tiny-invariant'
 import { ChainId } from '../constants'
-import { validateAndParseAddress } from '@jediswap/starknet'
+import { validateAndParseAddress } from 'starknet'
 import { Currency, TOKEN0 } from './currency'
-import { number } from '@jediswap/starknet'
+import { number } from 'starknet'
 
 /**
  * Represents an ERC20 token with a unique address and some metadata.

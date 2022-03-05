@@ -1,6 +1,6 @@
 import { TradeType } from './constants'
 import invariant from 'tiny-invariant'
-import { validateAndParseAddress } from '@jediswap/starknet'
+import { validateAndParseAddress } from 'starknet'
 import { CurrencyAmount, TOKEN0, Percent, Trade } from './entities'
 
 /**
