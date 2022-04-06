@@ -1,7 +1,7 @@
 import invariant from 'tiny-invariant'
 import { ChainId } from '../constants'
 import { validateAndParseAddress } from 'starknet'
-import { Currency, TOKEN0 } from './currency'
+import { Currency, ETHER } from './currency'
 import { number } from 'starknet'
 
 /**
@@ -60,41 +60,41 @@ export function currencyEquals(currencyA: Currency, currencyB: Currency): boolea
   }
 }
 
-export const WTOKEN0 = {
+export const WETH = {
   [ChainId.GÖRLI]: new Token(
     ChainId.GÖRLI,
     '0x4bc8ac16658025bff4a3bd0760e84fcf075417a4c55c6fae716efdd8f1ed26c',
-    TOKEN0.decimals,
-    TOKEN0.symbol,
-    TOKEN0.name
+    ETHER.decimals,
+    ETHER.symbol,
+    ETHER.name
   ),
   [ChainId.MAINNET]: new Token(
     ChainId.MAINNET,
     '0x4bc8ac16658025bff4a3bd0760e84fcf075417a4c55c6fae716efdd8f1ed26c',
-    TOKEN0.decimals,
-    TOKEN0.symbol,
-    TOKEN0.name
+    ETHER.decimals,
+    ETHER.symbol,
+    ETHER.name
   ),
   [ChainId.ROPSTEN]: new Token(
     ChainId.ROPSTEN,
     '0x4bc8ac16658025bff4a3bd0760e84fcf075417a4c55c6fae716efdd8f1ed26c',
-    TOKEN0.decimals,
-    TOKEN0.symbol,
-    TOKEN0.name
+    ETHER.decimals,
+    ETHER.symbol,
+    ETHER.name
   ),
   [ChainId.RINKEBY]: new Token(
     ChainId.RINKEBY,
     '0x4bc8ac16658025bff4a3bd0760e84fcf075417a4c55c6fae716efdd8f1ed26c',
-    TOKEN0.decimals,
-    TOKEN0.symbol,
-    TOKEN0.name
+    ETHER.decimals,
+    ETHER.symbol,
+    ETHER.name
   ),
 
   [ChainId.KOVAN]: new Token(
     ChainId.KOVAN,
     '0x4bc8ac16658025bff4a3bd0760e84fcf075417a4c55c6fae716efdd8f1ed26c',
-    TOKEN0.decimals,
-    TOKEN0.symbol,
-    TOKEN0.name
+    ETHER.decimals,
+    ETHER.symbol,
+    ETHER.name
   )
 }
