@@ -22,7 +22,7 @@ export class CurrencyAmount extends Fraction {
   //   return new CurrencyAmount(ETHER, amount)
   // }
 
-  public static token0(amount: BigintIsh): CurrencyAmount {
+  public static ether(amount: BigintIsh): CurrencyAmount {
     return new CurrencyAmount(ETHER, amount)
   }
 
