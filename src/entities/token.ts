@@ -63,28 +63,28 @@ export function currencyEquals(currencyA: Currency, currencyB: Currency): boolea
 export const WETH = {
   [ChainId.GÖRLI]: new Token(
     ChainId.GÖRLI,
-    '0x4bc8ac16658025bff4a3bd0760e84fcf075417a4c55c6fae716efdd8f1ed26c',
+    '0x049d36570d4e46f48e99674bd3fcc84644ddd6b96f7c741b1562b82f9e004dc7',
     ETHER.decimals,
     ETHER.symbol,
     ETHER.name
   ),
   [ChainId.MAINNET]: new Token(
     ChainId.MAINNET,
-    '0x4bc8ac16658025bff4a3bd0760e84fcf075417a4c55c6fae716efdd8f1ed26c',
+    '0x049d36570d4e46f48e99674bd3fcc84644ddd6b96f7c741b1562b82f9e004dc7',
     ETHER.decimals,
     ETHER.symbol,
     ETHER.name
   ),
   [ChainId.ROPSTEN]: new Token(
     ChainId.ROPSTEN,
-    '0x4bc8ac16658025bff4a3bd0760e84fcf075417a4c55c6fae716efdd8f1ed26c',
+    '0x049d36570d4e46f48e99674bd3fcc84644ddd6b96f7c741b1562b82f9e004dc7',
     ETHER.decimals,
     ETHER.symbol,
     ETHER.name
   ),
   [ChainId.RINKEBY]: new Token(
     ChainId.RINKEBY,
-    '0x4bc8ac16658025bff4a3bd0760e84fcf075417a4c55c6fae716efdd8f1ed26c',
+    '0x049d36570d4e46f48e99674bd3fcc84644ddd6b96f7c741b1562b82f9e004dc7',
     ETHER.decimals,
     ETHER.symbol,
     ETHER.name
@@ -92,7 +92,7 @@ export const WETH = {
 
   [ChainId.KOVAN]: new Token(
     ChainId.KOVAN,
-    '0x4bc8ac16658025bff4a3bd0760e84fcf075417a4c55c6fae716efdd8f1ed26c',
+    '0x049d36570d4e46f48e99674bd3fcc84644ddd6b96f7c741b1562b82f9e004dc7',
     ETHER.decimals,
     ETHER.symbol,
     ETHER.name
