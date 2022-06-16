@@ -2,44 +2,49 @@ import { Price } from './fractions/price'
 import { TokenAmount } from './fractions/tokenAmount'
 import invariant from 'tiny-invariant'
 import JSBI from 'jsbi'
-import { pack, keccak256 } from '@ethersproject/solidity'
-import { getCreate2Address } from '@ethersproject/address'
 
 import {
   BigintIsh,
   FACTORY_ADDRESS,
-  INIT_CODE_HASH,
   MINIMUM_LIQUIDITY,
   ZERO,
   ONE,
   FIVE,
   _997,
   _1000,
-  ChainId
+  ChainId,
+  PAIR_CLASS_HASH
 } from '../constants'
 import { sqrt, parseBigintIsh } from '../utils'
 import { InsufficientReservesError, InsufficientInputAmountError } from '../errors'
 import { Token } from './token'
+import { hash } from 'starknet'
 
 let PAIR_ADDRESS_CACHE: { [token0Address: string]: { [token1Address: string]: string } } = {}
 
 export class Pair {
   public readonly liquidityToken: Token
   private readonly tokenAmounts: [TokenAmount, TokenAmount]
-  public readonly pairAddress: string
 
   public static getAddress(tokenA: Token, tokenB: Token): string {
     const tokens = tokenA.sortsBefore(tokenB) ? [tokenA, tokenB] : [tokenB, tokenA] // does safety checks
+
+    const { calculateContractAddressFromHash, pedersen } = hash
+
+    const salt = pedersen([tokens[0].address, tokens[1].address])
+
+    const contructorCalldata = [tokens[0].address, tokens[1].address, FACTORY_ADDRESS]
 
     if (PAIR_ADDRESS_CACHE?.[tokens[0].address]?.[tokens[1].address] === undefined) {
       PAIR_ADDRESS_CACHE = {
         ...PAIR_ADDRESS_CACHE,
         [tokens[0].address]: {
           ...PAIR_ADDRESS_CACHE?.[tokens[0].address],
-          [tokens[1].address]: getCreate2Address(
-            FACTORY_ADDRESS,
-            keccak256(['bytes'], [pack(['address', 'address'], [tokens[0].address, tokens[1].address])]),
-            INIT_CODE_HASH
+          [tokens[1].address]: calculateContractAddressFromHash(
+            salt,
+            PAIR_CLASS_HASH,
+            contructorCalldata,
+            FACTORY_ADDRESS
           )
         }
       }
@@ -53,9 +58,13 @@ export class Pair {
       ? [tokenAmountA, tokenAmountB]
       : [tokenAmountB, tokenAmountA]
 
-    this.pairAddress = pairAddress ? pairAddress : Pair.getAddress(tokenAmountA.token, tokenAmountB.token)
-
-    this.liquidityToken = new Token(tokenAmounts[0].token.chainId, this.pairAddress, 18, 'MGP', 'Mesh Generic Pair')
+    this.liquidityToken = new Token(
+      tokenAmounts[0].token.chainId,
+      pairAddress ? pairAddress : Pair.getAddress(tokenAmounts[0].token, tokenAmounts[1].token),
+      18,
+      'JEDI-P',
+      'Jediswap Pair'
+    )
     this.tokenAmounts = tokenAmounts as [TokenAmount, TokenAmount]
   }
 
@@ -135,10 +144,7 @@ export class Pair {
     if (JSBI.equal(outputAmount.raw, ZERO)) {
       throw new InsufficientInputAmountError()
     }
-    return [
-      outputAmount,
-      new Pair(inputReserve.add(inputAmount), outputReserve.subtract(outputAmount), this.pairAddress)
-    ]
+    return [outputAmount, new Pair(inputReserve.add(inputAmount), outputReserve.subtract(outputAmount))]
   }
 
   public getInputAmount(outputAmount: TokenAmount): [TokenAmount, Pair] {
@@ -159,10 +165,7 @@ export class Pair {
       outputAmount.token.equals(this.token0) ? this.token1 : this.token0,
       JSBI.add(JSBI.divide(numerator, denominator), ONE)
     )
-    return [
-      inputAmount,
-      new Pair(inputReserve.add(inputAmount), outputReserve.subtract(outputAmount), this.pairAddress)
-    ]
+    return [inputAmount, new Pair(inputReserve.add(inputAmount), outputReserve.subtract(outputAmount))]
   }
 
   public getLiquidityMinted(
