@@ -15,7 +15,7 @@ First clone the repository:
 git clone https://github.com/jediswaplabs/jediswap-sdk.git
 ```
 
-Move into the uniswap-sdk working directory
+Move into the jediswap-sdk working directory
 
 ```sh
 cd jediswap-sdk/
