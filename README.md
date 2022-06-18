@@ -5,8 +5,6 @@
 [![npm version](https://img.shields.io/npm/v/@uniswap/sdk/latest.svg)](https://www.npmjs.com/package/@uniswap/sdk/v/latest)
 [![npm bundle size (scoped version)](https://img.shields.io/bundlephobia/minzip/@uniswap/sdk/latest.svg)](https://bundlephobia.com/result?p=@uniswap/sdk@latest)
 
-In-depth documentation on this SDK is available at [uniswap.org](https://docs.uniswap.org/sdk/2.0.0/).
-
 ## Running tests
 
 To run the tests, follow these steps. You must have at least node v10 and [yarn](https://yarnpkg.com/) installed.
@@ -14,13 +12,13 @@ To run the tests, follow these steps. You must have at least node v10 and [yarn]
 First clone the repository:
 
 ```sh
-git clone https://github.com/Uniswap/uniswap-sdk.git
+git clone https://github.com/jediswaplabs/jediswap-sdk.git
 ```
 
 Move into the uniswap-sdk working directory
 
 ```sh
-cd uniswap-sdk/
+cd jediswap-sdk/
 ```
 
 Install dependencies
