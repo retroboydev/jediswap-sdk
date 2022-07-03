@@ -1,7 +1,6 @@
 # Jediswap SDK
 
 [![code style: prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg?style=flat-square)](https://github.com/prettier/prettier)
-[![Actions Status](https://github.com/Uniswap/uniswap-sdk/workflows/CI/badge.svg)](https://github.com/Uniswap/uniswap-sdk)
 [![npm version](https://img.shields.io/npm/v/@jediswap/sdk/latest.svg)](https://www.npmjs.com/package/@jediswap/sdk/v/latest)
 [![npm bundle size (scoped version)](https://img.shields.io/bundlephobia/minzip/@jediswap/sdk/latest.svg)](https://bundlephobia.com/result?p=@jediswap/sdk@latest)
 
