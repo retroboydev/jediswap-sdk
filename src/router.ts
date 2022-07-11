@@ -1,7 +1,8 @@
 import { TradeType } from './constants'
 import invariant from 'tiny-invariant'
-import { validateAndParseAddress } from 'starknet'
+import { getChecksumAddress } from 'starknet'
 import { CurrencyAmount, ETHER, Percent, Trade } from './entities'
+import { validateAndParseAddress } from 'utils'
 
 /**
  * Options for producing the arguments to send call to the router.

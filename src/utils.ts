@@ -2,6 +2,8 @@ import invariant from 'tiny-invariant'
 import JSBI from 'jsbi'
 
 import { BigintIsh, ZERO, ONE, TWO, THREE, SolidityType, SOLIDITY_TYPE_MAXIMA } from './constants'
+import { getChecksumAddress } from 'starknet'
+import warning from 'tiny-warning'
 
 export function validateSolidityTypeInstance(value: JSBI, solidityType: SolidityType): void {
   invariant(JSBI.greaterThanOrEqual(value, ZERO), `${value} is not a ${solidityType}.`)
@@ -10,15 +12,13 @@ export function validateSolidityTypeInstance(value: JSBI, solidityType: Solidity
 
 // warns if addresses are not checksummed
 export function validateAndParseAddress(address: string): string {
-  let result = null
-
-  invariant(typeof address === 'string', `${address} is invalid address type`)
-
-  invariant(address.match(/^(0x)?[0-9a-fA-F]{63,64}$/), `${address} is invalid address format`)
-
-  result = address.substring(0, 2) === '0x' ? address : `0x${address}`
-
-  return result
+  try {
+    const checksummedAddress = getChecksumAddress(address)
+    warning(address === checksummedAddress, `${address} is not checksummed.`)
+    return checksummedAddress
+  } catch (error) {
+    invariant(false, `${address} is not a valid address.`)
+  }
 }
 
 export function parseBigintIsh(bigintIsh: BigintIsh): JSBI {
