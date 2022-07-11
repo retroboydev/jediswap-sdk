@@ -2,7 +2,7 @@ import invariant from 'tiny-invariant'
 import { ChainId } from '../constants'
 import { Currency, ETHER } from './currency'
 import { number } from 'starknet'
-import { validateAndParseAddress } from 'utils'
+import { validateAndParseAddress } from '../utils'
 
 /**
  * Represents an ERC20 token with a unique address and some metadata.
