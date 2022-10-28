@@ -13,7 +13,8 @@ import {
   _997,
   _1000,
   ChainId,
-  PAIR_CLASS_HASH
+  PAIR_CLASS_HASH,
+  DEFAULT_CHAIN_ID, FEE_TO_SETTER_ADDRESS, PAIR_PROXY_CLASS_HASH
 } from '../constants'
 import { sqrt, parseBigintIsh } from '../utils'
 import { InsufficientReservesError, InsufficientInputAmountError } from '../errors'
@@ -33,7 +34,7 @@ export class Pair {
 
     const salt = pedersen([tokens[0].address, tokens[1].address])
 
-    const contructorCalldata = [tokens[0].address, tokens[1].address, FACTORY_ADDRESS]
+    const contructorCalldata = [PAIR_CLASS_HASH[tokens[0].chainId ?? DEFAULT_CHAIN_ID], tokens[0].address, tokens[1].address, FEE_TO_SETTER_ADDRESS[tokens[0].chainId ?? DEFAULT_CHAIN_ID]]
 
     if (PAIR_ADDRESS_CACHE?.[tokens[0].address]?.[tokens[1].address] === undefined) {
       PAIR_ADDRESS_CACHE = {
@@ -42,9 +43,9 @@ export class Pair {
           ...PAIR_ADDRESS_CACHE?.[tokens[0].address],
           [tokens[1].address]: calculateContractAddressFromHash(
             salt,
-            PAIR_CLASS_HASH,
+            PAIR_PROXY_CLASS_HASH[tokens[0].chainId ?? DEFAULT_CHAIN_ID],
             contructorCalldata,
-            FACTORY_ADDRESS
+            FACTORY_ADDRESS[tokens[0].chainId ?? DEFAULT_CHAIN_ID]
           )
         }
       }
